@@ -31,8 +31,9 @@ public class ForceReceiver : MonoBehaviour
         // dampingVelocity.y
         if (agent != null)
         {
-            if (impact == Vector3.zero)
+            if (impact.sqrMagnitude < 0.2f * 0.2f)
             {
+                impact = Vector3.zero;
                 agent.enabled = true;
             }
         }
