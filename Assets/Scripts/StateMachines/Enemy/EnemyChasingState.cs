@@ -40,7 +40,7 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Exit()
     {
-        if (stateMachine.Agent.isOnNavMesh)
+        if (stateMachine.Agent.isOnNavMesh)//one fix maybe not good
         {
             stateMachine.Agent.ResetPath();
         }
