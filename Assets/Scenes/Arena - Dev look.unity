@@ -2980,23 +2980,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3131430251750017279, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017322145
+      value: -0.000000017322142
       objectReference: {fileID: 0}
     - target: {fileID: 3131430251750017279, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -7.929455e-10
+      value: 7.929453e-10
       objectReference: {fileID: 0}
     - target: {fileID: 3131430251877965347, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.027598523
+      value: 0.02759852
       objectReference: {fileID: 0}
     - target: {fileID: 3131430251877965347, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3.3315148e-16
+      value: -0.0000000018619363
       objectReference: {fileID: 0}
     - target: {fileID: 3131430251877965347, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.1219132e-17
+      value: 5.1406265e-11
       objectReference: {fileID: 0}
     - target: {fileID: 7010436213859024725, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_ChildCameras.Array.size
@@ -9912,7 +9912,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081620223}
-  m_LocalRotation: {x: 0.045728516, y: 0.00000003464429, z: -0.000000001585891, w: 0.99895394}
+  m_LocalRotation: {x: 0.045728516, y: -0.00000003464429, z: 0.0000000015858908, w: 0.99895394}
   m_LocalPosition: {x: 0, y: 1.45, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
