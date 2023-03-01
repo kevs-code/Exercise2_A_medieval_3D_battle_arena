@@ -39,9 +39,10 @@ public class Targeter : MonoBehaviour
         foreach (Target target in targets)
         {
             Vector2 viewPos = mainCamera.WorldToViewportPoint(target.transform.position);
-            //only captures targets in view
+            // only captures targets in view
+            // viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1
 
-            if (viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1)
+            if (!target.GetComponentInChildren<Renderer>().isVisible)
             {
                 continue;
             }
