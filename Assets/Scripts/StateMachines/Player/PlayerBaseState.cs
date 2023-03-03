@@ -23,11 +23,11 @@ public abstract class PlayerBaseState : State
         {
             if (stateMachine.Targeter.CurrentTarget != null)
             {
-                stateMachine.AudioPlayer.pitch = 1.5f;
+                stateMachine.AudioPlayerFeet.pitch = 1.5f;
             }
             else
             {
-                stateMachine.AudioPlayer.pitch = 3f;
+                stateMachine.AudioPlayerFeet.pitch = 3f;
             }
                 PlayFootSteps();
         }
@@ -36,12 +36,12 @@ public abstract class PlayerBaseState : State
 
     private void PlayFootSteps()
     {
-        if (!stateMachine.AudioPlayer.isPlaying)
+        if (!stateMachine.AudioPlayerFeet.isPlaying)
         {
 
             int playIndex = UnityEngine.Random.Range(0, stateMachine.PlayList.LightArmourWalking.Count);
-            stateMachine.AudioPlayer.clip = stateMachine.PlayList.LightArmourWalking[playIndex];
-            stateMachine.AudioPlayer.Play();
+            stateMachine.AudioPlayerFeet.clip = stateMachine.PlayList.LightArmourWalking[playIndex];
+            stateMachine.AudioPlayerFeet.Play();
         }
         else
         {

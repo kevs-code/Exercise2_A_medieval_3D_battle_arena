@@ -73,6 +73,8 @@ public class PlayerAttackingState : PlayerBaseState
                 attack.ComboStateIndex
             )
         );
+        Debug.Log("Play Effort or Grunt on player root... head audio source Combo or Heavy Attack!");
+        PlayEffort();
     }
 
     private void TryApplyForce()
@@ -82,5 +84,20 @@ public class PlayerAttackingState : PlayerBaseState
         stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
 
         alreadyAppliedForce = true;
+    }
+
+    private void PlayEffort()
+    {
+        if (!stateMachine.AudioPlayerHead.isPlaying)
+        {
+
+            int playIndex = UnityEngine.Random.Range(0, stateMachine.PlayList.grunts.Count);
+            stateMachine.AudioPlayerHead.clip = stateMachine.PlayList.grunts[playIndex];
+            stateMachine.AudioPlayerHead.Play();
+        }
+        else
+        {
+            stateMachine.AudioPlayerHead.Stop();
+        }
     }
 }
