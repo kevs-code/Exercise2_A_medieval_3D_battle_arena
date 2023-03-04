@@ -18,6 +18,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
+    [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
     [field: SerializeField] public AudioSource AudioPlayerFeet { get; private set; }
     [field: SerializeField] public AudioSource AudioPlayerHead { get; private set; }
 
