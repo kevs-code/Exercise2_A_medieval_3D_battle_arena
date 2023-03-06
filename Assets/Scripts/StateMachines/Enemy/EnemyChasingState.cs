@@ -28,6 +28,7 @@ public class EnemyChasingState : EnemyBaseState
         }
         else if (IsInAttackRange())
         {
+            //enter or block chance to block 100%
             stateMachine.SwitchState(new EnemyAttackingState(stateMachine));
             return;
         }

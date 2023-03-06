@@ -4,6 +4,8 @@
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
 /[Aa]ssets/Asset*
+/[Aa]ssets/Animations*
+/[Aa]ssets/Game*
 /[Aa]ssets/Polygon*
 /[Aa]ssets/ExplosiveLLC*
 /[Aa]ssets/Infinity*

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerImpactState : PlayerBaseState
 {
     private readonly int ImpactHash = Animator.StringToHash("Sword_Hit_L_1");
+    //impact = sword_hit_l_1
     private const float CrossFadeDuration = 0.1f;
     private float duration = 1f;
 

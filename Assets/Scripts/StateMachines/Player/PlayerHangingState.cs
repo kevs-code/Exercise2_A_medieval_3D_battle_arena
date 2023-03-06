@@ -6,6 +6,7 @@ public class PlayerHangingState : PlayerBaseState
 {
     private Vector3 closestPoint;
     private Vector3 ledgeForward;
+    //private readonly int HangingHash = Animator.StringToHash("Ledge-Grab");
     private readonly int HangingHash = Animator.StringToHash("Hang");
     private const float CrossFadeDuration = 0.1f;
     public PlayerHangingState(PlayerStateMachine stateMachine, Vector3 ledgeForward, Vector3 closestPoint) : base(stateMachine)

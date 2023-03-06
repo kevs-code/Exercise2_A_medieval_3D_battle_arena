@@ -33,6 +33,8 @@ public class Health : MonoBehaviour
 
         if (isInvulnerable) { return; }
 
+        Debug.Log("Was damaged");
+
         health = Mathf.Max(health - damage, 0);
 
         OnTakeDamage?.Invoke();
