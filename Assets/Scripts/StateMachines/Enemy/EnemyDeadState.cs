@@ -13,6 +13,7 @@ public class EnemyDeadState : EnemyBaseState
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);
         GameObject.Destroy(stateMachine.Target);
+        stateMachine.AnnouncerLabel.text = "Victory!";
     }
 
     public override void Tick(float deltaTime)

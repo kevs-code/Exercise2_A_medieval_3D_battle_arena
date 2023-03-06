@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
@@ -18,12 +19,15 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
+    [field: SerializeField] public TextMeshProUGUI AnnouncerLabel { get; private set; }
+    [field: SerializeField] public TextMeshProUGUI StrengthLabel { get; private set; }
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
     [field: SerializeField] public AudioSource AudioPlayerFeet { get; private set; }
     [field: SerializeField] public AudioSource AudioPlayerHead { get; private set; }
     [field: SerializeField] public float DodgeDuration { get; private set; }
     [field: SerializeField] public float DodgeProtection { get; private set; }
     [field: SerializeField] public float BlockProtection { get; private set; }
+    [field: SerializeField] public int Strength { get; private set; }
     [field: SerializeField] public float DodgeLength { get; private set; }
     [field: SerializeField] public float JumpForce { get; private set; }
     [field: SerializeField] public AudioList PlayList { get; private set; }
