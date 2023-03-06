@@ -36,7 +36,7 @@ public abstract class PlayerBaseState : State
 
     private void PlayFootSteps()
     {
-        if (!stateMachine.AudioPlayerFeet.isPlaying)
+        if (!stateMachine.AudioPlayerFeet.isPlaying)//OnPlayerParentAudioSource
         {
 
             int playIndex = UnityEngine.Random.Range(0, stateMachine.PlayList.LightArmourWalking.Count);

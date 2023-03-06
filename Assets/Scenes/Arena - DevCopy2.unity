@@ -2988,15 +2988,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3131430251877965347, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.018141447
+      value: -0.018141445
       objectReference: {fileID: 0}
     - target: {fileID: 3131430251877965347, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000032731354
+      value: 0.00000003458899
       objectReference: {fileID: 0}
     - target: {fileID: 3131430251877965347, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000024050444
+      value: -0.0000000025415403
       objectReference: {fileID: 0}
     - target: {fileID: 3131430252014067605, guid: 2dbfcc2a061fecd45bb95cfec2f03113, type: 3}
       propertyPath: m_LocalRotation.y
@@ -8317,6 +8317,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1954161293}
+    - target: {fileID: 2080282174975591440, guid: 64309af04b7391849b062870b42393c5, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 2080282174975591440, guid: 64309af04b7391849b062870b42393c5, type: 3}
       propertyPath: <PlayList>k__BackingField
       value: 

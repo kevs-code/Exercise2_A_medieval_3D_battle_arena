@@ -21,8 +21,9 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
     [field: SerializeField] public AudioSource AudioPlayerFeet { get; private set; }
     [field: SerializeField] public AudioSource AudioPlayerHead { get; private set; }
-
     [field: SerializeField] public float DodgeDuration { get; private set; }
+    [field: SerializeField] public float DodgeProtection { get; private set; }
+    [field: SerializeField] public float BlockProtection { get; private set; }
     [field: SerializeField] public float DodgeLength { get; private set; }
     [field: SerializeField] public float JumpForce { get; private set; }
     [field: SerializeField] public AudioList PlayList { get; private set; }

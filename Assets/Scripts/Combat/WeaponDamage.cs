@@ -20,7 +20,7 @@ public class WeaponDamage : MonoBehaviour
         if (other == myCollider) { return; }
 
         if (alreadyCollidedWith.Contains(other)) { return; }
-        Debug.Log("check");
+
         alreadyCollidedWith.Add(other);
 
         if (other.TryGetComponent<Health>(out Health health))

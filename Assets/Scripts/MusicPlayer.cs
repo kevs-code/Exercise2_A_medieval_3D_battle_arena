@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AudioSource musicPlayer;
+    [SerializeField] private AudioList audioList;
+    
+    private void Start()
     {
-        
+        PlayMusic();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void PlayMusic()
     {
-        
+        if (!musicPlayer.isPlaying)
+        {
+
+            int playIndex = Random.Range(0, audioList.Music.Count);
+            musicPlayer.clip = audioList.Music[playIndex];
+            musicPlayer.Play();//loop?
+        }
+        else
+        {
+            //stateMachine.AudioPlayer.Stop();
+        }
     }
 }
