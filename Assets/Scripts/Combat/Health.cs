@@ -8,8 +8,8 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private Image healthBar;
-
-    private int health;
+    [SerializeField] private UIManager uiManager;
+    private int health = 100;
     private bool isInvulnerable = false;//question your choices
     private bool isDodged = false;
     private float absorbDamage = 1f;
@@ -22,12 +22,18 @@ public class Health : MonoBehaviour
 
     public bool IsDead => health == 0;
 
-    private void Start()
+
+    private void Awake()// spotted race condition on health
     {
         health = maxHealth;
         //stateMachine = gameObject.GetComponent<PlayerStateMachine>();
     }
-    
+
+    public int GetHealth()// this will be SOMETHING
+    {
+        return health;
+    }
+
     public void SetInvulnerable(bool isInvulnerable)// this will be SOMETHING
     {
         this.isInvulnerable = isInvulnerable;//block or dodge chance 100%
@@ -105,7 +111,7 @@ public class Health : MonoBehaviour
         }
 
         health = Mathf.Max(health - (int)modifiedDamage, 0);
-
+        uiManager.SetHealthLabel(health);
         OnTakeDamage?.Invoke();
 
         if (health == 0)

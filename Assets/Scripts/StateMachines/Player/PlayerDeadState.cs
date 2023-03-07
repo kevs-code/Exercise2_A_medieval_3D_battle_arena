@@ -13,7 +13,7 @@ public class PlayerDeadState : PlayerBaseState
         // toggle ragdoll EXTEND
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);
-        stateMachine.AnnouncerLabel.text = "You Failed!";
+        stateMachine.UIManager.SetAnnounceLabel("You Failed!");
         //stateMachine.Hud.
     }
 
