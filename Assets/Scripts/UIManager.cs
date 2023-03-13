@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] PlayerStateMachine stateMachine;
     [SerializeField] EnemyStateMachine enemyStateMachine;
+    [SerializeField] public CombatLogic combatLogic;
     [SerializeField] TextMeshProUGUI strengthLabel; 
     [SerializeField] TextMeshProUGUI healthEnemyLabel;
     [SerializeField] TextMeshProUGUI timeLabel;

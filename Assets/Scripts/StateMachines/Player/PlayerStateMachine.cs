@@ -20,16 +20,17 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     [field: SerializeField] public UIManager UIManager { get; private set; }
+    [field: SerializeField] public SoundManager SoundManager { get; private set; }
+    //[field: SerializeField] public SceneManager SceneManager { get; private set; }
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
-    [field: SerializeField] public AudioSource AudioPlayerFeet { get; private set; }
-    [field: SerializeField] public AudioSource AudioPlayerHead { get; private set; }
+    // stats
     [field: SerializeField] public float DodgeDuration { get; private set; }
     [field: SerializeField] public float DodgeProtection { get; private set; }
     [field: SerializeField] public float BlockProtection { get; private set; }
-    [field: SerializeField] public int Strength { get; set; }
     [field: SerializeField] public float DodgeLength { get; private set; }
+    [field: SerializeField] public int Strength { get; set; }
+    // stats above
     [field: SerializeField] public float JumpForce { get; private set; }
-    [field: SerializeField] public AudioList PlayList { get; private set; }
     public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
     public Transform MainCameraTransform { get; private set; }
 

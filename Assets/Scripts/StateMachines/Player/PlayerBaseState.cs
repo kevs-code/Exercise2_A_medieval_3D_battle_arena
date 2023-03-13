@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class PlayerBaseState : State
 {
     protected PlayerStateMachine stateMachine;
+    protected SoundManager sound;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -21,34 +22,19 @@ public abstract class PlayerBaseState : State
     {
         if (Vector3.zero != motion)
         {
+            sound = stateMachine.SoundManager;
             if (stateMachine.Targeter.CurrentTarget != null)
             {
-                stateMachine.AudioPlayerFeet.pitch = 1.5f;
+                sound.feetPlayer.pitch = 1.5f;
             }
             else
             {
-                stateMachine.AudioPlayerFeet.pitch = 3f;
+                sound.feetPlayer.pitch = 3f;
             }
-
-            PlayFootSteps();
+            sound = stateMachine.SoundManager;
+            sound.PlayWholeSound(sound.feetPlayer, sound.audioList.LightArmourWalking);
         }
         stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
-    }
-
-    private void PlayFootSteps()
-    {
-        if (!stateMachine.AudioPlayerFeet.isPlaying)//OnPlayerParentAudioSource
-        {
-
-            int playIndex = UnityEngine.Random.Range(0, stateMachine.PlayList.LightArmourWalking.Count);
-            stateMachine.AudioPlayerFeet.clip = stateMachine.PlayList.LightArmourWalking[playIndex];
-            stateMachine.AudioPlayerFeet.Play();
-        }
-        else
-        {
-            //stateMachine.AudioPlayer.Stop();
-        }
-        // Debug.Log("Moving " + stateMachine.PlayList.LightArmourWalking.Count + "Also " + stateMachine.AudioPlayer);
     }
 
     protected void FaceTarget()

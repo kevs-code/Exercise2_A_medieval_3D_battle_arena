@@ -22,7 +22,7 @@ public class PlayerDodgingState : PlayerBaseState
         stateMachine.Animator.SetFloat(DodgeForwardHash, dodgingDirectionInput.y);
         stateMachine.Animator.SetFloat(DodgeRightHash, dodgingDirectionInput.x);
         stateMachine.Animator.CrossFadeInFixedTime(DodgeBlendTreeHash, CrossFadeDuration);
-        stateMachine.Health.SetDefenceVsHit(stateMachine.DodgeProtection);
+        stateMachine.UIManager.combatLogic.SetDefenceVsHit(stateMachine.DodgeProtection);
         // stateMachine.Health.SetInvulnerable(true); // hmmm
     }
 
@@ -45,6 +45,6 @@ public class PlayerDodgingState : PlayerBaseState
     public override void Exit()
     {
         //stateMachine.Health.SetInvulnerable(false);
-        stateMachine.Health.SetDodge(false);
+        stateMachine.UIManager.combatLogic.SetIsDodge(false);
     }
 }
