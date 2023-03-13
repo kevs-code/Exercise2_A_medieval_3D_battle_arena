@@ -16,7 +16,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.Weapon.SetAttack(attack.Damage, attack.Knockback);
+        stateMachine.Weapon.SetAttack(attack.Damage, attack.Knockback, stateMachine.Strength);
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }
 
@@ -73,7 +73,7 @@ public class PlayerAttackingState : PlayerBaseState
                 attack.ComboStateIndex
             )
         );
-        Debug.Log("Play Effort or Grunt on player root... head audio source Combo or Heavy Attack!");
+        // Debug.Log("Play Effort or Grunt on player root... head audio source Combo or Heavy Attack!");
         PlayEffort();
     }
 

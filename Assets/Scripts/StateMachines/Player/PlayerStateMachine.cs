@@ -26,13 +26,13 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float DodgeDuration { get; private set; }
     [field: SerializeField] public float DodgeProtection { get; private set; }
     [field: SerializeField] public float BlockProtection { get; private set; }
-    [field: SerializeField] public int Strength { get; private set; }
+    [field: SerializeField] public int Strength { get; set; }
     [field: SerializeField] public float DodgeLength { get; private set; }
     [field: SerializeField] public float JumpForce { get; private set; }
     [field: SerializeField] public AudioList PlayList { get; private set; }
     public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
-
     public Transform MainCameraTransform { get; private set; }
+
     private void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
@@ -48,12 +48,14 @@ public class PlayerStateMachine : StateMachine
     {
         Health.OnTakeDamage += HandleTakeDamage;
         Health.OnDie += HandleDie;
+        UIManager.OnWin += HandleWin;
     }
 
     private void OnDisable()
     {
         Health.OnTakeDamage -= HandleTakeDamage;
         Health.OnDie -= HandleDie;
+        UIManager.OnWin -= HandleWin;
     }
 
     private void HandleTakeDamage()
@@ -64,5 +66,10 @@ public class PlayerStateMachine : StateMachine
     private void HandleDie()
     {
         SwitchState(new PlayerDeadState(this));
+    }
+
+    private void HandleWin()
+    {
+        SwitchState(new PlayerWinState(this));
     }
 }

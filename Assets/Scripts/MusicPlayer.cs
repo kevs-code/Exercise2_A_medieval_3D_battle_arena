@@ -16,7 +16,6 @@ public class MusicPlayer : MonoBehaviour
     {
         if (!musicPlayer.isPlaying)
         {
-
             int playIndex = Random.Range(0, audioList.Music.Count);
             musicPlayer.clip = audioList.Music[playIndex];
             musicPlayer.Play();//loop?

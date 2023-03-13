@@ -29,7 +29,8 @@ public abstract class PlayerBaseState : State
             {
                 stateMachine.AudioPlayerFeet.pitch = 3f;
             }
-                PlayFootSteps();
+
+            PlayFootSteps();
         }
         stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
     }

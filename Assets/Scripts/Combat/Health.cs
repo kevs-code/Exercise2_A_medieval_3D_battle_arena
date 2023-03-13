@@ -12,11 +12,13 @@ public class Health : MonoBehaviour
     private int health = 100;
     private bool isInvulnerable = false;//question your choices
     private bool isDodged = false;
+    private bool isEnemy = false;
     private float absorbDamage = 1f;
+
     [field: SerializeField] public AudioSource BattleSounds { get; private set; }
     [field: SerializeField] public AudioList PlayList { get; private set; }
-    
-    // private PlayerStateMachine stateMachine;
+    //private PlayerStateMachine playerStateMachine;
+    private EnemyStateMachine stateMachine;
     public event Action OnTakeDamage;
     public event Action OnDie;
 
@@ -26,12 +28,33 @@ public class Health : MonoBehaviour
     private void Awake()// spotted race condition on health
     {
         health = maxHealth;
-        //stateMachine = gameObject.GetComponent<PlayerStateMachine>();
     }
 
+    private void Start()
+    {
+        if (gameObject.TryGetComponent<EnemyStateMachine>(out EnemyStateMachine stateMachine))
+        {
+            SetIsEnemy(true);
+        }
+        else
+        {
+            SetIsEnemy(false);
+        }
+    }
     public int GetHealth()// this will be SOMETHING
     {
         return health;
+    }
+
+    public void SetHealth()// this will be SOMETHING
+    {
+        health = maxHealth;
+        uiManager.SetHealthLabel(health);
+        healthBar.fillAmount = 1;
+    }
+    public void SetIsEnemy(bool isEnemy)
+    {
+        this.isEnemy = isEnemy;//Set Climb nextw
     }
 
     public void SetInvulnerable(bool isInvulnerable)// this will be SOMETHING
@@ -85,7 +108,7 @@ public class Health : MonoBehaviour
 
         // refactor
         
-        if (isInvulnerable) { return; }// no logic will get past this so no sound plays
+        if (isInvulnerable) { return; }
 
         float modifiedDamage = damage * absorbDamage; //= 0;
 
@@ -108,10 +131,18 @@ public class Health : MonoBehaviour
             Debug.Log("play impact");// dodge false/ block false
             PlaySound(PlayList.impacts);
             Debug.Log("Was damaged by full amount: " + (int)modifiedDamage);
+            if (isEnemy)
+            {
+                uiManager.strength += 1;
+                uiManager.SetStrengthLabel(uiManager.strength);
+            }
         }
 
         health = Mathf.Max(health - (int)modifiedDamage, 0);
-        uiManager.SetHealthLabel(health);
+        if (isEnemy)
+        {
+            uiManager.SetHealthLabel(health);
+        }
         OnTakeDamage?.Invoke();
 
         if (health == 0)

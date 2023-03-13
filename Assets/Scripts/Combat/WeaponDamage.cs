@@ -6,6 +6,7 @@ public class WeaponDamage : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
     [SerializeField] private float knockback;
+    private int strength;
     private int damage;
 
     private List<Collider> alreadyCollidedWith = new List<Collider>();
@@ -22,10 +23,10 @@ public class WeaponDamage : MonoBehaviour
         if (alreadyCollidedWith.Contains(other)) { return; }
 
         alreadyCollidedWith.Add(other);
-
+ 
         if (other.TryGetComponent<Health>(out Health health))
         {
-            health.DealDamage(damage);
+            health.DealDamage(damage);//right here!
         }
 
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
@@ -35,11 +36,18 @@ public class WeaponDamage : MonoBehaviour
         }
     }
 
-
     public void SetAttack(int damage, float knockback)
     {
-        this.damage = damage;
-        this.knockback = knockback;
+        SetAttack(damage, knockback, 1);
+    }
 
+    public void SetAttack(int damage, float knockback, int strength)
+    {
+        //this.damage = damage;
+        this.knockback = knockback;
+        this.strength = strength;
+        Debug.Log(damage + " * 1 + (" + strength + " / 100)");
+        this.damage = damage * 1 + (strength / 100);
+        Debug.Log("new damage " + this.damage);
     }
 }
