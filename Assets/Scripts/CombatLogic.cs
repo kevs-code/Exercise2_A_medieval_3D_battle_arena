@@ -96,11 +96,11 @@ public class CombatLogic : MonoBehaviour
             Debug.Log("play impact");// dodge false/ block false
             soundManager.PlaySound(soundManager.battlePlayer, soundManager.audioList.impacts);
             Debug.Log("Was damaged by full amount: " + (int)modifiedDamage);
-            Health health = transform.parent.parent.GetComponent<Health>();
-            if (health.GetIsEnemy())
+            StatManager stat = transform.parent.parent.GetComponent<StatManager>();
+            if (stat.GetIsEnemy())
             {
-                uIManager.strength += 1;
-                uIManager.SetStrengthLabel(uIManager.strength);
+                //uIManager.strength += 1;
+                //uIManager.SetStrengthLabel(uIManager.strength);
             }
         }
     }

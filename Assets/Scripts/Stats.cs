@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class Stats : ScriptableObject
     public int blocking = 10;// We have a better block chance
     public int dodging = 10;// We have a better dodge chance and dodge length... remember
     public int combatFever = 10;// Chance of enemy power attack or better player power attack modifier
-    public int Stamina = 10;// Weaker and or slower movement, attack speed
+    public int stamina = 10;// Weaker and or slower movement, attack speed
+    public int maxHealth = 100;
     //public int Resolve;
+    //[System.NonSerialized]
+
 }

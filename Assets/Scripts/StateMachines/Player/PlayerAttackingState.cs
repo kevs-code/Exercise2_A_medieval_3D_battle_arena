@@ -16,7 +16,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.Weapon.SetAttack(attack.Damage, attack.Knockback, stateMachine.Strength);
+        stateMachine.Weapon.SetAttack(attack.Damage, attack.Knockback, stateMachine.StatManager.GetStrength());
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }
 
@@ -26,6 +26,7 @@ public class PlayerAttackingState : PlayerBaseState
 
         FaceTarget();
         float normalizedTime = GetNormalizedTime(stateMachine.Animator, "Attack");
+
         // redundant check normalizedTime >= previousFrameTime && 
         if (normalizedTime >= previousFrameTime && normalizedTime < 1f)
         {
@@ -74,6 +75,7 @@ public class PlayerAttackingState : PlayerBaseState
             )
         );
         // Debug.Log("Play Effort or Grunt on player root... head audio source Combo or Heavy Attack!");
+        //sound.PlaySound(sound.voicePlayer, sound.audioList.grunts);
         sound.PlayWholeSound(sound.voicePlayer, sound.audioList.grunts);
     }
 

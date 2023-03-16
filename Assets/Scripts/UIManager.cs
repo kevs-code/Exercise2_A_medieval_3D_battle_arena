@@ -14,27 +14,62 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthEnemyLabel;
     [SerializeField] TextMeshProUGUI timeLabel;
     [SerializeField] TextMeshProUGUI announceLabel;
-    [SerializeField] TextMeshProUGUI gameAnnounceLabel;
-    public int strength;//or private us statemachine
-    public event Action OnWin;
+    [SerializeField] public TextMeshProUGUI gameAnnounceLabel;
+    //[SerializeField] public StatManager
+    //public int strength;//or private us statemachine
     private int health;
-    private int time;
+
+    //private int time;
+    public float TimeLeft = 60;
+    private bool TimerOn = false;
+
+
+    public event Action OnWin;
     void Start()
     {
-        strength = stateMachine.Strength;
+
+        //strength = stateMachine.Strength;
         health = enemyStateMachine.Health.GetHealth();
-        time = 12;
-        SetStrengthLabel(strength);
+        //time = 12;
+        //SetStrengthLabel(strength);
         SetHealthLabel(health);
-        SetTimeLabel(time);
+        TimerOn = true;
         SetAnnounceLabel(announceLabel.text);
 
     }
 
-    public void SetGameAnnounceLabel(string final)
+    private void Update()
     {
-        OnWin?.Invoke();
+        if (TimerOn)
+        {
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= Time.deltaTime;
+                UpdateTimer(TimeLeft);
+            }
+            else
+            {
+                Debug.Log("Timer is UP!");
+                TimeLeft = 0;
+                TimerOn = false;
+            }
+        }
+    }
+
+    void UpdateTimer(float currentTime)
+    {
+        currentTime += 1;
+
+        int seconds = Mathf.FloorToInt(currentTime % 60);
+
+        SetTimeLabel(seconds);
+    }
+
+    public void SetGameAnnounceLabel(string final)//triggers on win
+    {
+        OnWin?.Invoke();//only player subscribed
         StartCoroutine(FinalTextFadeCoroutine(final));
+        //stateMachine.UIManager.gameAnnounceLabel.color = Color.red;//update enemydeadstate
     }
 
     public void SetAnnounceLabel(string announce)
@@ -44,8 +79,7 @@ public class UIManager : MonoBehaviour
 
     public void SetStrengthLabel(int strength)
     {
-        this.strength = strength;
-        stateMachine.Strength = strength;//issue
+        // this.strength = strength;
         strengthLabel.text = strength.ToString();
     }
 
@@ -84,7 +118,6 @@ public class UIManager : MonoBehaviour
             else if (scene.buildIndex + 1 == count)
             {
                 SetAnnounceLabel("Final Victory!");
-                //stateMachine.AnnouncerLabel.text = "Final Victory!";
                 ChangeScene(0);
             }
             else
@@ -105,40 +138,19 @@ public class UIManager : MonoBehaviour
 
     IEnumerator FinalTextFadeCoroutine(string final)
     {
-        //yield return StartCoroutine(FadeInText(1f, textToUse));
         yield return new WaitForSeconds(5f);
         gameAnnounceLabel.color = Color.yellow;
         gameAnnounceLabel.text = final;
         yield return new WaitForSeconds(5f);
         // announceLabel.text = "";
-        //yield return StartCoroutine(FadeOutText(1f, textToUse));
     }
 
     IEnumerator LoadCoroutine(int index)
     {
-        //if index == .count you win final!
-        //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-        //yield on a new YieldInstruction that waits for 6 seconds.
         yield return new WaitForSeconds(6);
-
-        //After we have waited 6 seconds print the time again.
-        LoadScene(index);
-        //InstantiateBullet(index);
+        LoadScene(index);//replace with reset update stats
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
-    public void InstantiateBullet(int index)
-    {
-        enemyStateMachine.gameObject.SetActive(false);
-
-        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
-        if (bullet != null)
-        {
-            bullet.transform.position = new Vector3(5f, 0f, 16f);
-            bullet.transform.Rotate(0, 180, 0);
-            bullet.SetActive(true);
-        }
-    }
 }

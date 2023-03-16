@@ -7,10 +7,11 @@ public abstract class PlayerBaseState : State
 {
     protected PlayerStateMachine stateMachine;
     protected SoundManager sound;
-
+    
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
+        this.sound = stateMachine.SoundManager;
     }
 
     protected void Move(float deltaTime)
@@ -22,7 +23,6 @@ public abstract class PlayerBaseState : State
     {
         if (Vector3.zero != motion)
         {
-            sound = stateMachine.SoundManager;
             if (stateMachine.Targeter.CurrentTarget != null)
             {
                 sound.feetPlayer.pitch = 1.5f;
@@ -31,7 +31,6 @@ public abstract class PlayerBaseState : State
             {
                 sound.feetPlayer.pitch = 3f;
             }
-            sound = stateMachine.SoundManager;
             sound.PlayWholeSound(sound.feetPlayer, sound.audioList.LightArmourWalking);
         }
         stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);

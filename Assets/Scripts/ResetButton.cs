@@ -8,8 +8,9 @@ using System;
 public class ResetButton : MonoBehaviour
 {
     [SerializeField] private Button resetButton;
-    [SerializeField] private PlayerStateMachine player;
-    [SerializeField] private EnemyStateMachine enemy;//GameObject[]
+    //[SerializeField] private PlayerStateMachine player;
+    //[SerializeField] private EnemyStateMachine enemy;//GameObject[]
+    //[SerializeField] private EnemySpawner enemySpawner;
 
 
     private void Start()
@@ -23,9 +24,12 @@ public class ResetButton : MonoBehaviour
     private void ResetScene()
     {
         /*
+        // just make an object pool like car parent! Put this back!
+
         //reset... transforms and health for player and enemy change round number change enemy or enemy health
         Debug.Log(player.gameObject.transform + "\n" + enemy.gameObject.transform);
         player.Controller.enabled = false;
+        
         player.transform.position = Vector3.zero;
         player.transform.rotation = new Quaternion(0, 0, 0, 1);
         player.Controller.enabled = true;
@@ -39,7 +43,18 @@ public class ResetButton : MonoBehaviour
         enemy.Controller.enabled = true;
         //player.Health.SetHealth(player);
         //enemy.Health.SetHealth(enemy);
+        new PlayerImpactState(this)
         */
+        //player.Health.SetHealth(player.stats.maxHealth);
+        //enemy.Health.SetHealth(enemy.stats.maxHealth);
+        //player.SwitchState(new PlayerFreeLookState(player));
+        //enemy.SwitchState(new EnemyIdleState(enemy));// restore health, reset combat fever
+
+        //player.gameObject.SetActive(false);
+        //player.transform.position = Vector3.zero;
+        //player.transform.rotation = new Quaternion(0, 0, 0, 1);
+        //player.gameObject.SetActive(true);
+        //enemySpawner.SetActiveEnemy(0);
         SceneManager.LoadScene(1);
     }
 }

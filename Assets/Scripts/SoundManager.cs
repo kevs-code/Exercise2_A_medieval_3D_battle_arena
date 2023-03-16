@@ -8,22 +8,17 @@ public class SoundManager : MonoBehaviour//static?
     [SerializeField] public AudioSource musicPlayer;
     [SerializeField] public AudioSource voicePlayer;
     [SerializeField] public AudioSource feetPlayer;//actually just on player right now!
-    public AudioSource audioSource;//can you get hold of musicplayer and player[this(battlesounds)] and head(efforts)
+    // public AudioSource audioSource;//can you get hold of musicplayer and player[this(battlesounds)] and head(efforts)
     [SerializeField] public AudioList audioList;
 
     private void Awake()
     {
-        audioSource = battlePlayer;
+        // audioSource = battlePlayer;
     }
 
     private void Start()
     {
-        PlayMusic();
-    }
-
-    public void SetAudioSource()
-    {
-        // do we need an audio source reference elsewhere? make dictionary    
+        PlayWholeSound(musicPlayer, audioList.Music);
     }
 
     public void PlaySound(AudioSource source, List<AudioClip> sound)//static?
@@ -48,20 +43,6 @@ public class SoundManager : MonoBehaviour//static?
         {
             source.Stop();
         }*/
-    }
-
-    private void PlayMusic()
-    {
-        if (!musicPlayer.isPlaying)
-        {
-            int playIndex = Random.Range(0, audioList.Music.Count);
-            musicPlayer.clip = audioList.Music[playIndex];
-            musicPlayer.Play();//loop?
-        }
-        else
-        {
-            //musicPlayer.Stop();
-        }
     }
 }
             /*refactor musicplayer, playerbasestate, Health,

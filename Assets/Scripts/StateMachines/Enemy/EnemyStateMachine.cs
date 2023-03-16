@@ -15,12 +15,14 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public Target Target { get; private set; }
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     [field: SerializeField] public UIManager UIManager { get; private set; }
+    [field: SerializeField] public StatManager StatManager { get; private set; }
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
     [field: SerializeField] public int AttackDamage { get; private set; }
     [field: SerializeField] public int AttackKnockback { get; private set; }
     public Health Player { get; private set; }
+    public Stats stats;
 
     private void Start()
     {

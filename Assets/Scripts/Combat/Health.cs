@@ -40,9 +40,10 @@ public class Health : MonoBehaviour
         return health;
     }
 
-    public void SetHealth()
+    public void SetHealth(int maxHealth)
     {
-        health = maxHealth;
+        this.health = maxHealth;
+        this.maxHealth = maxHealth;
         uiManager.SetHealthLabel(health);
         healthBar.fillAmount = 1;
     }
@@ -69,7 +70,7 @@ public class Health : MonoBehaviour
 
         if (isEnemy)
         {
-            uiManager.SetHealthLabel(health);
+            uiManager.SetHealthLabel(health);//is enemy exists for health label
         }
 
         OnTakeDamage?.Invoke();

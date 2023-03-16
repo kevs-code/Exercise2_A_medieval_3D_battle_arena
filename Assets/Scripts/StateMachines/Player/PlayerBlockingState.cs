@@ -13,7 +13,7 @@ public class PlayerBlockingState : PlayerBaseState
     public override void Enter()
     {
         //stateMachine.Health.SetInvulnerable(true);// again armor
-        stateMachine.UIManager.combatLogic.SetDefenceVsDamage(stateMachine.BlockProtection);//you call this here!
+        stateMachine.UIManager.combatLogic.SetDefenceVsDamage(stateMachine.StatManager.GetBlockProtection());//you call this here!
         stateMachine.Animator.CrossFadeInFixedTime(BlockHash, CrossFadeDuration);
     }
 

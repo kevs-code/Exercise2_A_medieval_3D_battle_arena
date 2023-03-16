@@ -11,10 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena - Dev look.unity
     guid: ad23e060cbbfcb1418a76e9f163a68d8
-  - enabled: 1
-    path: Assets/Scenes/Arena - Dev look 1.unity
-    guid: 5f1d6f717ad833b4f825aea188ddf6b0
-  - enabled: 1
-    path: Assets/Scenes/Arena - Dev look 2.unity
-    guid: 548a8f64f3e123e4f9d44010bef78c74
   m_configObjects: {}

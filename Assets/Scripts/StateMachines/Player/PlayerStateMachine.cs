@@ -25,14 +25,15 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
     // stats
     [field: SerializeField] public float DodgeDuration { get; private set; }
-    [field: SerializeField] public float DodgeProtection { get; private set; }
-    [field: SerializeField] public float BlockProtection { get; private set; }
+
     [field: SerializeField] public float DodgeLength { get; private set; }
-    [field: SerializeField] public int Strength { get; set; }
+    [field: SerializeField] public StatManager StatManager { get; private set; }
     // stats above
     [field: SerializeField] public float JumpForce { get; private set; }
     public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
     public Transform MainCameraTransform { get; private set; }
+
+    public Stats stats;
 
     private void Start()
     {

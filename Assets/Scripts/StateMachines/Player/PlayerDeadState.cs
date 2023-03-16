@@ -15,6 +15,7 @@ public class PlayerDeadState : PlayerBaseState
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);
         //stateMachine.Sound
+        //stateMachine.UIManager.gameAnnounceLabel.color = Color.red;
         stateMachine.UIManager.SetGameAnnounceLabel("GAME OVER");
         stateMachine.UIManager.SetAnnounceLabel("You Failed!");
         stateMachine.UIManager.ChangeScene(0);
