@@ -42,13 +42,14 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            if (stateMachine.Targeter.CurrentTarget != null)
+            if (stateMachine.Targeter.CurrentTarget != null)//Left this in as a start point to reinstate freelook later
             {
                 stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
             }
             else
             {
-                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+                //stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             }
         }
 

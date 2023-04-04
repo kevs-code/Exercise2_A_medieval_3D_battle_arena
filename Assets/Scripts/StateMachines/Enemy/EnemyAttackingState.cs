@@ -15,7 +15,8 @@ public class EnemyAttackingState : EnemyBaseState
     public override void Enter()
     {
         // easy FacePlayer();
-        stateMachine.Weapon.SetAttack(stateMachine.AttackDamage, stateMachine.AttackKnockback);
+        stateMachine.Weapon.SetAttack(stateMachine.AttackDamage, stateMachine.AttackKnockback);//
+        // above just reads from state machine fields not stats
         stateMachine.Animator.CrossFadeInFixedTime(AttackHash, TransitionDuration);
     }
 

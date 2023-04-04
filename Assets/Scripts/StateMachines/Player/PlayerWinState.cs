@@ -15,7 +15,7 @@ public class PlayerWinState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(WinHash, CrossFadeDuration);
+        stateMachine.Animator.CrossFadeInFixedTime(WinHash, CrossFadeDuration);//10secs roughly
     }
 
     public override void Tick(float deltaTime)
@@ -34,6 +34,6 @@ public class PlayerWinState : PlayerBaseState
 
     public override void Exit()
     {
-        ReturnToLocomotion();
+        //ReturnToLocomotion();// still causes stack overflow with reset
     }
 }

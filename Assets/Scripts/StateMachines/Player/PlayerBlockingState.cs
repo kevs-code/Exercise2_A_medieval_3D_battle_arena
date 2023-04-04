@@ -28,7 +28,8 @@ public class PlayerBlockingState : PlayerBaseState
         }
         if (stateMachine.Targeter.CurrentTarget == null)
         {
-            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            //stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             return;
         }
     }

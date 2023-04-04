@@ -97,7 +97,7 @@ public class StatManager : MonoBehaviour
             player.Health.SetHealth(maxHealth);
         }
     }
-
+}
 
     /*
     // consideration
@@ -154,4 +154,4 @@ public class StatManager : MonoBehaviour
         return total;
     }
     */
-}
+

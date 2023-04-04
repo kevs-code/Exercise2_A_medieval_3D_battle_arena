@@ -37,7 +37,8 @@ public class WeaponDamage : MonoBehaviour
 
     public void SetAttack(int damage, float knockback)
     {
-        SetAttack(damage, knockback, 15);
+        SetAttack(damage, knockback, 15);// always 15 needs to feed in stat then remove this method
+        // damage and knockback should also be in stat not statemachine
     }
 
     public void SetAttack(int damage, float knockback, int strength)

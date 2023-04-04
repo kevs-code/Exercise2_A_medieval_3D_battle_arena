@@ -11,15 +11,9 @@ public class PlayerDeadState : PlayerBaseState
 
     public override void Enter()
     {
-        // toggle ragdoll EXTEND
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);
-        //stateMachine.Sound
-        //stateMachine.UIManager.gameAnnounceLabel.color = Color.red;
-        stateMachine.UIManager.SetGameAnnounceLabel("GAME OVER");
-        stateMachine.UIManager.SetAnnounceLabel("You Failed!");
-        stateMachine.UIManager.ChangeScene(0);
-        //stateMachine.Hud.
+        stateMachine.RoundManager.EnemyWonFight();
     }
 
     public override void Tick(float deltaTime)

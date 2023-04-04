@@ -15,7 +15,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.InputReader.TargetEvent += OnTarget;
+        //stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.DodgeEvent += OnDodge;
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFadeDuration);
@@ -35,7 +35,8 @@ public class PlayerTargetingState : PlayerBaseState
         }
         if (stateMachine.Targeter.CurrentTarget == null)
         {
-            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            // stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            if (!stateMachine.Targeter.SelectTarget()) { return; }//we get a target still if there is one
             return;
         }
 
@@ -49,7 +50,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Exit()
     {
-        stateMachine.InputReader.TargetEvent -= OnTarget;
+        //stateMachine.InputReader.TargetEvent -= OnTarget;
         stateMachine.InputReader.DodgeEvent -= OnDodge;
         stateMachine.InputReader.JumpEvent -= OnJump;
     }

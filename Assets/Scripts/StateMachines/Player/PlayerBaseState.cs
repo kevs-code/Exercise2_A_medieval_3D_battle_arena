@@ -47,15 +47,19 @@ public abstract class PlayerBaseState : State
         stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
     }
 
-    protected void ReturnToLocomotion()
+    public void ReturnToLocomotion()// caused a stack overflow winstate and reset statemachine switch state
     {
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        /*
         if (stateMachine.Targeter.CurrentTarget != null)
         {
             stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
         }
         else
         {
+            //stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
+        */
     }
 }

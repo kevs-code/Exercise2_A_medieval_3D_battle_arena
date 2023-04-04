@@ -18,7 +18,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.InputReader.TargetEvent += OnTarget;
+        //stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.JumpEvent += OnJump;
 
         stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0f);
@@ -58,7 +58,7 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.JumpEvent -= OnJump;
-        stateMachine.InputReader.TargetEvent -= OnTarget;
+        //stateMachine.InputReader.TargetEvent -= OnTarget;
     }
 
     private Vector3 CalculateMovement()
@@ -85,10 +85,12 @@ public class PlayerFreeLookState : PlayerBaseState
             Quaternion.LookRotation(movement),
             deltaTime * stateMachine.RotationDamping);
     }
-
-    public void OnTarget()
-    {
-        if (!stateMachine.Targeter.SelectTarget()) { return; }
-        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-    }
+    /*
+        public void OnTarget()
+        {
+            if (!stateMachine.Targeter.SelectTarget()) { return; }
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        }
+    //player free look state not needed but ontarget is!
+    */
 }

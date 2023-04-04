@@ -32,9 +32,9 @@ public abstract class EnemyBaseState : State
         stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
     }
 
-    protected bool IsInChaseRange()
+    protected bool IsInChaseRange()//always in PlayerChaseRange set as 100 and defaults to targeting now (always have target state)
     {
-        if (stateMachine.Player.IsDead) { return false; }
+        if (stateMachine.Player.IsDead) { return false; }//HEALTH COMPONENT PLAYER IS DEAD
 
         float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
         

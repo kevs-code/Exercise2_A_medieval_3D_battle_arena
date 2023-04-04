@@ -11,17 +11,20 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        Scene scene = SceneManager.GetActiveScene();
+
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);
-        GameObject.Destroy(stateMachine.Target);
-        int count = SceneManager.sceneCountInBuildSettings;
-        if (scene.buildIndex == count - 1)
-        {
-            stateMachine.UIManager.SetGameAnnounceLabel("YOU WON THE GAME!");
-        }
-        stateMachine.UIManager.SetAnnounceLabel("You Win!");
-        stateMachine.UIManager.ChangeScene(scene.buildIndex);
+
+        Targeter targeter = stateMachine.Player.gameObject.GetComponentInChildren<Targeter>();
+        //targeter.Cancel();
+        targeter.RemoveTargetWithDelay(stateMachine.Target);//move this?
+        //GameObject.Destroy(stateMachine.Target);
+
+        //stateMachine.Target.DestroyTarget();
+        // Player won!
+
+        stateMachine.RoundManager.PlayerWonFight();
+        
     }
 
     public override void Tick(float deltaTime)

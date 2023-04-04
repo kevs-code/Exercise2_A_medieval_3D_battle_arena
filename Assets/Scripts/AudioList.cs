@@ -13,16 +13,18 @@ public class AudioList : ScriptableObject
     [SerializeField] public List<AudioClip> lightSwing;
     [SerializeField] public List<AudioClip> heavySwing;
     [SerializeField] public List<AudioClip> impacts;
-    [SerializeField] public List<AudioClip> deathImpacts;
-    [SerializeField] public List<AudioClip> deathSweeps;
-    [SerializeField] public List<AudioClip> grunts;
-    [SerializeField] public List<AudioClip> announcerEnemyLowHealth;
-    [SerializeField] public List<AudioClip> announcerLowHealth;
-    [SerializeField] public List<AudioClip> announcerDeathPlayer;
-    [SerializeField] public List<AudioClip> announcerDeathEnemy;
-    [SerializeField] public List<AudioClip> Music;
-    [SerializeField] public List<AudioClip> heavyArmourRunning;
-    [SerializeField] public List<AudioClip> heavyArmourWalking;
+    [field: SerializeField] public List<AudioClip> LightArmourWalking { get; private set; }//18mb so what until you don't need it!
     [SerializeField] public List<AudioClip> lightArmourRunning;
-    [field: SerializeField] public List<AudioClip> LightArmourWalking { get; private set; }
+    [SerializeField] public List<AudioClip> Music;
+    [SerializeField] public List<AudioClip> grunts;
+    [SerializeField] public List<AudioClip> deathSweeps;
+    /*
+        [SerializeField] public List<AudioClip> announcerEnemyLowHealth;
+        [SerializeField] public List<AudioClip> announcerLowHealth;
+        [SerializeField] public List<AudioClip> announcerDeathPlayer;
+        [SerializeField] public List<AudioClip> announcerDeathEnemy;
+        [SerializeField] public List<AudioClip> heavyArmourRunning;
+        [SerializeField] public List<AudioClip> heavyArmourWalking;
+        [SerializeField] public List<AudioClip> deathImpacts;
+    */
 }

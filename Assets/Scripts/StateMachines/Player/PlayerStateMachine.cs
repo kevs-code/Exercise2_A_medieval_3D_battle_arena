@@ -20,6 +20,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     [field: SerializeField] public UIManager UIManager { get; private set; }
+    [field: SerializeField] public RoundManager RoundManager { get; private set; }
     [field: SerializeField] public SoundManager SoundManager { get; private set; }
     //[field: SerializeField] public SceneManager SceneManager { get; private set; }
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
@@ -43,21 +44,23 @@ public class PlayerStateMachine : StateMachine
 
         MainCameraTransform = Camera.main.transform;
 
-        SwitchState(new PlayerFreeLookState(this));
+        SwitchState(new PlayerTargetingState(this));
     }
 
     private void OnEnable()
     {
         Health.OnTakeDamage += HandleTakeDamage;
         Health.OnDie += HandleDie;
-        UIManager.OnWin += HandleWin;
+        RoundManager.OnWin += HandleWin;
+        RoundManager.OnCheer += HandleCheer;
     }
 
     private void OnDisable()
     {
         Health.OnTakeDamage -= HandleTakeDamage;
         Health.OnDie -= HandleDie;
-        UIManager.OnWin -= HandleWin;
+        RoundManager.OnWin -= HandleWin;
+        RoundManager.OnCheer -= HandleCheer;
     }
 
     private void HandleTakeDamage()
@@ -73,5 +76,10 @@ public class PlayerStateMachine : StateMachine
     private void HandleWin()
     {
         SwitchState(new PlayerWinState(this));
+    }
+
+    private void HandleCheer()
+    {
+        SwitchState(new PlayerWinState(this));// until I implement PlayerCheerState
     }
 }
